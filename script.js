@@ -100,6 +100,8 @@ document.head.appendChild(explosionStyle);
 
 // No button hover and click handlers
 let moveCount = 0;
+const NO_BUTTON_VERTICAL_RANGE = 100; // Vertical movement range in pixels
+const YES_BUTTON_GROWTH_RATE = 0.1; // Growth rate per attempt
 
 function moveNoButton() {
     const container = document.querySelector('.buttons');
@@ -108,7 +110,7 @@ function moveNoButton() {
     
     // Calculate available space
     const maxX = containerRect.width - btnRect.width;
-    const maxY = 100; // Vertical movement range
+    const maxY = NO_BUTTON_VERTICAL_RANGE;
     
     // Generate random position
     const randomX = Math.random() * maxX - (maxX / 2);
@@ -119,7 +121,7 @@ function moveNoButton() {
     
     // Increase yes button size after each attempt
     moveCount++;
-    const newSize = 1 + (moveCount * 0.1);
+    const newSize = 1 + (moveCount * YES_BUTTON_GROWTH_RATE);
     yesBtn.style.transform = `scale(${newSize})`;
     
     // Make yes button more appealing
